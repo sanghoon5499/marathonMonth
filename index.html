@@ -1,1 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Marathon Month</title>
 
+        <!-- Bootstrap CDN -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+        <!-- import font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">   
+    
+        <!-- include stylesheet and JS -->
+        <link rel="stylesheet" href="style.css">
+        <script src="code.js"></script> 
+
+    </head>
+
+    <body>
+  
+        <div class="container-fluid">
+            
+
+            <span style="display:inline-block; height: 0vh;"></span>
+
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6" style="text-align: center;">
+                    <img src="test.jpg" width="400vw">
+                </div>
+            </div>
+
+            <!-- PROGRESS BAR -->
+            <div class="row">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6" style="background-color: orange;height:5vh">
+                    <div id="progress" style="background-color: greenyellow;height:5vh;width:0%">
+                        Progress
+                    </div>
+                </div>
+                <div class="col-sm-3"></div>
+            </div>
+            
+            <span style="display:inline-block; height: 5vh;"></span>
+
+            <!-- INPUT UI -->
+            <div class="row" style="text-align: center;vertical-align:middle;">
+                <div class="col-sm-4"></div>
+
+
+                <div class="col-sm-4" style="background-color: orange;">
+                    <form name="distanceForm">
+                        <label for="distance">Distance (km)</label>
+                        <input type="number" autocomplete="off" id="distance" name="distance" placeholder="0">
+                        <input type="button" autocomplete="off" value="Add" onClick="addToBar()">
+                    </form>
+
+                    <input class="input" id="toggle" type="checkbox">
+                    <label class="label" for="toggle">
+                        <div class="left">
+                            Walking
+                        </div>
+
+                        <div class="switch">
+                            <span class="slider round"></span>
+                        </div>
+
+                        <div class="right">
+                            Running
+                        </div>
+                    </label>
+                </div>
+
+                <div class="col-sm-4">
+                     
+                </div>
+            </div>
+
+            <span style="display:inline-block; height: 1vh;"></span>
+
+            <!-- INFO BAR -->
+            <div class="row" style="text-align: center;">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4">
+                    <h2> See your progress </h2>
+                    <a href="monthly.html">Montly</a>
+                    <a href="yearly.html">Yearly</a>
+                </div>
+                <div class="col-sm-4"></div>
+            </div>
+
+
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Monthly Stats</title>
+
+        <!-- Bootstrap CDN -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+        <!-- Chart.js CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    
+        <!-- import font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">   
+    
+        <!-- include stylesheet and JS -->
+        <link rel="stylesheet" href="style.css">
+        <script src="code.js"></script> 
+
+    </head>
+
+    <body>
+  
+        <div class="container-fluid">
+            <span style="display:inline-block; height: 20vh;"></span>
+
+            <!-- create 31 lines -->
+            <!-- create lines using JS and add nothing to remaining days if there are any -->
+
+            <div class="col-sm-3" style="background-color: white;">
+                <span style="display:inline-block; height: 15vh;"></span>
+                <h3>Distance: 0</h3>
+                <h3>Average Distance: 0</h3>
+                <h3>Average Speed: 0</h3>
+            </div>
+
+            <div class="col-sm-9">
+                <span style="display:inline-block; height: 15vh;"></span>
+                <canvas id="myChart" width="100vw" height="200vh"></canvas>
+            </div>
+
+            <script>
+                var arrayVals = []
+                for (let i = 1; i <= 31; i++) {
+                    arrayVals.push(i.toString())
+                }
+
+                var xValues = arrayVals;
+                var yValues = [5, 4, 2.3, 2, 5];
+                var barColors = ["red", "green","blue","orange","brown"];
+                
+                new Chart("myChart", {
+                    type: "horizontalBar",
+                    data: {
+                        labels: xValues,
+                        datasets: [{
+                        backgroundColor: barColors,
+                        data: yValues
+                        }]
+                    },
+                    options: {
+                        legend: {display: false},
+                        title: {
+                        display: true,
+                        text: "Distance Walked per Day",
+                        responsive: true,
+                        maintainAspectRatio: false
+                        }
+                    }
+                });
+                </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- <span style="display:inline-block; height: 2vh;"></span>
+            <div class="row">
+                <div class="col-sm-4"></div>
+                <div class="col-sm-4" style="border-style: solid; border-color: orange;">
+                    <h2>8/31</h2>
+                    <div id="progress" style="background-color: greenyellow;height:2vh;width:46%"></div>
+                    <h3>Distance: 0</h3>
+                    <h3>Average Speed: 0</h3>
+                </div>
+            </div> -->
+
+
+        </div>
+    </body>
+</html>
