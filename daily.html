@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Monthly Stats</title>
+        <title>Daily Stats</title>
 
         <!-- Bootstrap CDN -->
         <meta charset="utf-8">
@@ -42,31 +42,36 @@
 
             <div class="col-sm-8">
                 <span style="display:inline-block; height: 15vh;"></span>
-                <canvas id="monthly" width="100vw" height="200vh"></canvas>
+                <canvas id="daily" width="100vw" height="200vh"></canvas>
             </div>
 
             <script>
+                var codes = ["a", "b", "c", "d", "e", 
+                             "f", "g", "h", "i", "j", 
+                             "k", "l", "m", "n", "o", 
+                             "p", "q", "r", "s", "t", 
+                             "u", "v", "w", "x", "y", 
+                             "z", "!", "@", "#", "$",
+                             "%"]
+
                 var arrayVals = []
-                for (let i = 1; i <= 12; i++) {
+                var yVals = []
+                for (let i = 1; i <= 31; i++) {
                     arrayVals.push(i.toString())
+
+                    var d = localStorage.getItem(codes[i-1]);
+                    if (d == null) {
+                        d = "0"
+                    }
+                    yVals.push(d)
                 }
 
                 var xValues = arrayVals;
-                var monthsArray = []
-                for (let i = 0; i <= 12; i++) {
-                    var curMonth = localStorage.getItem(i);
-                    if (curMonth == null) {
-                        curMonth = "0"
-                        localStorage.setItem(i, curMonth)
-                    }
-                    monthsArray.push(curMonth)
-                }
 
-
-                var yValues = monthsArray;
+                var yValues = yVals;
                 var barColors = "lightgreen";
                 
-                new Chart("monthly", {
+                new Chart("daily", {
                     type: "horizontalBar",
                     data: {
                         labels: xValues,
@@ -80,7 +85,7 @@
                         legend: {display: false},
                         title: {
                         display: true,
-                        text: "Distance Walked per Month",
+                        text: "Distance Walked this Month",
                         responsive: true,
                         maintainAspectRatio: false
                         },
@@ -95,21 +100,10 @@
                         }
                     }
                 });
-                </script>
+            </script>
 
 
 
-
-            <!-- <span style="display:inline-block; height: 2vh;"></span>
-            <div class="row">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-4" style="border-style: solid; border-color: orange;">
-                    <h2>8/31</h2>
-                    <div id="progress" style="background-color: greenyellow;height:2vh;width:46%"></div>
-                    <h3>Distance: 0</h3>
-                    <h3>Average Speed: 0</h3>
-                </div>
-            </div> -->
 
 
         </div>

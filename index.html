@@ -11,6 +11,9 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+        <!-- Chart.js CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     
         <!-- import font -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,64 +29,84 @@
     <body>
   
         <div class="container-fluid">
-            
-
-            <span style="display:inline-block; height: 0vh;"></span>
+            <!-- create 31 lines -->
+            <!-- create lines using JS and add nothing to remaining days if there are any -->
 
             <div class="row">
-                <div class="col-md-3"></div>
-                <div class="col-md-6" style="text-align: center;">
-                    <img src="test.jpg" width="400vw">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                    <span style="display:inline-block; height: 15vh;"></span>
+                    <canvas id="monthly" width="100vw" height="20vh"></canvas>
                 </div>
+
+                <script>
+                    var arrayVals = ["1"]
+
+                    var xValues = arrayVals;
+                    var yValuesArray = [localStorage.getItem("monthlyDistance").toString()];
+                    if (yValuesArray == null) {
+                        yValuesArray = ["0"]
+                    }
+
+                    var yValues = yValuesArray;
+                    var barColors = "lightgreen";
+                    
+                    new Chart("monthly", {
+                        type: "horizontalBar",
+                        data: {
+                            labels: xValues,
+                            datasets: [{
+                                backgroundColor: barColors,
+                                data: yValues
+                            }
+                        ]
+                        },
+                        options: {
+                            legend: {display: false},
+                            title: {
+                            display: true,
+                            text: "This Month's Distance",
+                            responsive: true,
+                            maintainAspectRatio: false
+                            },
+                            scales: {
+                                xAxes: [{
+                                    display: true,
+                                    position: 'top',
+                                    ticks: {
+                                        beginAtZero: true,
+                                        max: 42.195
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                    </script>
             </div>
 
-            <!-- PROGRESS BAR -->
-            <div class="row">
-                <div class="col-sm-3"></div>
-                <div class="col-sm-6" style="background-color: orange;height:5vh">
-                    <div id="progress" style="background-color: greenyellow;height:5vh;width:0%">
-                        Progress
-                    </div>
-                </div>
-                <div class="col-sm-3"></div>
-            </div>
-            
-            <span style="display:inline-block; height: 5vh;"></span>
 
+            <span style="display:inline-block; height: 8vh;"></span>
             <!-- INPUT UI -->
             <div class="row" style="text-align: center;vertical-align:middle;">
                 <div class="col-sm-4"></div>
 
-
-                <div class="col-sm-4" style="background-color: orange;">
+ 
+                <div class="col-sm-4">
                     <form name="distanceForm">
                         <label for="distance">Distance (km)</label>
                         <input type="number" autocomplete="off" id="distance" name="distance" placeholder="0">
                         <input type="button" autocomplete="off" value="Add" onClick="addToBar()">
                     </form>
 
-                    <input class="input" id="toggle" type="checkbox">
-                    <label class="label" for="toggle">
-                        <div class="left">
-                            Walking
-                        </div>
-
-                        <div class="switch">
-                            <span class="slider round"></span>
-                        </div>
-
-                        <div class="right">
-                            Running
-                        </div>
-                    </label>
-                </div>
-
-                <div class="col-sm-4">
-                     
+                    <span style="display:inline-block; height: 8vh;"></span>
+                    
+                    <input type="radio" id="walk" name="type" value="1">
+                    <label for="walk">walking</label><br>
+                    <input type="radio" id="run" name="type" value="2">
+                    <label for="run">running</label><br>  
                 </div>
             </div>
 
-            <span style="display:inline-block; height: 1vh;"></span>
 
             <!-- INFO BAR -->
             <div class="row" style="text-align: center;">
@@ -91,12 +114,10 @@
                 <div class="col-sm-4">
                     <h2> See your progress </h2>
                     <a href="monthly.html">Montly</a>
-                    <a href="yearly.html">Yearly</a>
+                    <a href="daily.html">Daily</a>
                 </div>
                 <div class="col-sm-4"></div>
             </div>
-
-
 
         </div>
     </body>
