@@ -36,7 +36,7 @@
                 <div class="col-sm-2"></div>
                 <div class="col-sm-8">
                     <span style="display:inline-block; height: 15vh;"></span>
-                    <canvas id="monthly" width="100vw" height="20vh"></canvas>
+                    <canvas id="index" width="100vw" height="30vh"></canvas>
                 </div>
 
                 <script>
@@ -51,7 +51,7 @@
                     var yValues = yValuesArray;
                     var barColors = "lightgreen";
                     
-                    new Chart("monthly", {
+                    new Chart("index", {
                         type: "horizontalBar",
                         data: {
                             labels: xValues,
