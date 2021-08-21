@@ -25,6 +25,14 @@ function addToBar() {
     //  - if new year, reset this data
     var d = new Date();
     var n = d.getMonth();
+    var m = d.getDate() - 1; // -1 since we get a number from 1-31, not 0-30
+
+    if (n == 0 && m == 1) {
+        for (let i = 0; i < 12; i++) {
+            localStorage.setItem(i, "0")
+        }
+    }
+
 
     var currentMonth = localStorage.getItem(n);
     if (currentMonth == null) {
@@ -37,7 +45,6 @@ function addToBar() {
 
     // update daily info
     //  - if new month, reset this data
-    var m = d.getDate() - 1; // -1 since we get a number from 1-31, not 0-30
     if (m == 1) {
         for (let i = 0; i < 31; i++) {
             localStorage.setItem(codes[i], "0");
