@@ -12,8 +12,6 @@ function addToBar() {
 
         var newDistance = parseFloat(parseFloat(currentDistance) + parseFloat(distanceToAdd)).toFixed(2);
         
-        alert(newDistance)
-
         localStorage.setItem("monthlyDistance", newDistance);
     }
     else {
