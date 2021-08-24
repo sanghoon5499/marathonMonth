@@ -63,6 +63,9 @@
                     if (d == null) {
                         d = "0"
                     }
+                    if (d != "0") {
+                        d = (parseFloat(d) - 1).toString()
+                    }
                     daysArray.push(d)
                 }
 
