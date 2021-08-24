@@ -93,9 +93,15 @@
  
                 <div class="col-sm-4">
                     <form name="distanceForm">
-                        <label for="distance">Distance (km)</label>
+                        <label for="distance">Add Distance (km)</label>
                         <input type="number" autocomplete="off" id="distance" name="distance" placeholder="0">
                         <input type="button" autocomplete="off" value="Add" onClick="addToBar()">
+                    </form>
+                    <br>
+                    <form name="RemoveDistanceForm">
+                        <label for="removeDistance">Remove Distance (km)</label>
+                        <input type="number" autocomplete="off" id="removeDistance" name="removeDistance" placeholder="0">
+                        <input type="button" autocomplete="off" value="Remove" onClick="removeFromBar()">
                     </form>
 
                     <span style="display:inline-block; height: 6vh;"></span>
